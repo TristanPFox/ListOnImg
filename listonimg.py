@@ -1,4 +1,6 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
+
+font = ImageFont.truetype("arial.ttf", size=32)
 
 items = ["Line 1", "Line 2", "Line 3", "Line 4", "Line 5"]
 canvas = Image.open("canvas.png")
@@ -9,6 +11,6 @@ for index, item in enumerate(items):
   line_pos = (index + 1) * line_spacing
   text_width, text_height = draw.textsize(item)
   text_pos = (canvas.width - text_width) // 2
-  draw.text((text_pos, line_pos), item)
+  draw.text((text_pos, line_pos), item, font=font)
 
 canvas.save("result.png")
